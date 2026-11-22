@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --voxa-bg: #f5f8fc;
+  --voxa-panel: #ffffff;
+  --voxa-panel-2: #edf4fb;
+  --voxa-line: #dce6f0;
+  --voxa-blue: #2878d0;
+  --voxa-blue-dark: #1764b7;
+  --voxa-cyan: #159b9b;
+  --voxa-text: #172b45;
+  --voxa-text-muted: #64748b;
+  --voxa-danger: #df555d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+html {
+  background: var(--voxa-bg);
+}
+
+body {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(40, 120, 208, 0.08), transparent 42%),
+    var(--voxa-bg);
+  color: var(--voxa-text);
+  font-family: 'Inter', sans-serif;
+}
+
+#root {
+  max-width: none;
+  border: none;
+  box-shadow: none;
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Main meeting container */
+.meeting-container {
+  min-height: 100vh;
+  width: 100%;
+  padding: 35px 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  color: var(--voxa-text);
+}
+
+/* Header */
+.meeting-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto 30px;
+}
+
+.meeting-header h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--voxa-text);
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.meeting-header h1::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: var(--voxa-blue);
+  box-shadow: 0 0 0 5px rgba(40, 120, 208, 0.12);
+  animation: voxa-pulse 1.8s ease-in-out infinite;
+}
+
+.meeting-header p {
+  font-family: 'Space Mono', monospace;
+  color: var(--voxa-blue);
+  background: #eaf3fd;
+  border: 1px solid #d5e6f8;
+  border-radius: 9px;
+  letter-spacing: 0.04em;
+  font-size: 13px;
+  padding: 11px 15px;
+  margin: 0;
+}
+
+/* Logo/status pulse */
+@keyframes voxa-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(40, 120, 208, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(40, 120, 208, 0.035);
+  }
+}
+
+/* Video layout */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.video-card {
+  position: relative;
+  background: linear-gradient(145deg, #e6eef7, #dce8f3);
+  border: 1px solid #cbd9e7;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 14px 35px rgba(35, 65, 100, 0.10);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-card:hover {
+  border-color: rgba(40, 120, 208, 0.45);
+  box-shadow: 0 17px 40px rgba(35, 65, 100, 0.14);
+}
+
+.video-card video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Participant label */
+.participant-name {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background: rgba(23, 43, 69, 0.82);
+  color: #ffffff;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+
+/* Participant left notification */
+.participant-left-message {
+  font-family: 'Inter', sans-serif;
+  color: var(--voxa-cyan);
+  background: #e8f7f6;
+  border: 1px solid #ccebe8;
+  border-radius: 9px;
+  font-size: 14px;
+  text-align: center;
+  margin: 14px auto 0;
+  padding: 10px 16px;
+  letter-spacing: normal;
+}
+
+/* Meeting controls toolbar */
+.meeting-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 28px auto 0;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--voxa-line);
+  border-radius: 18px;
+  box-shadow: 0 14px 35px rgba(35, 65, 100, 0.12);
+}
+
+/* Individual control buttons */
+.control-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 90px;
+  min-height: 92px;
+  padding: 12px 16px;
+  border: 1px solid #dce6f0;
+  border-radius: 13px;
+  background: #edf4fb;
+  color: #2878d0;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.control-btn:hover {
+  background: #e1effd;
+  border-color: #a9cbed;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 16px rgba(40, 120, 208, 0.10);
+}
+
+.control-btn:active {
+  transform: scale(0.97);
+}
+
+.control-btn:focus-visible {
+  outline: 2px solid var(--voxa-blue);
+  outline-offset: 3px;
+}
+
+/* Control icons */
+.control-icon {
+  font-size: 22px;
+}
+
+/* Muted / camera off state */
+.control-btn.active {
+  background: #fff0f0;
+  border-color: #f0c4c7;
+  color: var(--voxa-danger);
+}
+
+/* Leave button */
+.control-btn.leave-button {
+  background: #fff1f1;
+  border: 1px solid #f0c4c7;
+  color: var(--voxa-danger);
+}
+
+.control-btn.leave-button:hover {
+  background: #ffe2e3;
+  border-color: #e99ba1;
+}
+
+/* Mobile layout */
+@media (max-width: 700px) {
+  .meeting-container {
+    padding: 22px 16px;
+    justify-content: flex-start;
+  }
+
+  .meeting-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .meeting-header h1 {
+    font-size: 28px;
+  }
+
+  .meeting-header p {
+    font-size: 11px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .meeting-controls {
+    width: 100%;
+    gap: 8px;
+    padding: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .control-btn {
+    flex: 1 1 75px;
+    min-width: 75px;
+    min-height: 82px;
+    padding: 10px 8px;
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition: none !important;
+  }
+}
